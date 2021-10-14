@@ -22,15 +22,6 @@ int main(int argc, char *argv[])
      QByteArray data1 = str1.toLocal8Bit();
      QByteArray data2 = QByteArray::fromHex(data1);
 
-     //将10进制串转化成16进制数值组
-     //QStirng int -> QByteArray hex
-     bool ok;
-     QByteArray data3, data4;
-     QString str2 = "65534";
-     uint value = str2.toUInt(&ok, 10);
-     str2 = str2.setNum(value, 16);
-     data3 = str2.toLocal8Bit();
-     data4 = QByteArray::fromHex(data3);
 
 
      //将十六进制数组转换成十六进制串（Hex）串
@@ -55,15 +46,6 @@ int main(int argc, char *argv[])
 
        pxmap->save("ab.png", "PNG");
 
-
-       QPixmap pxmap111(12, 12);
-       pxmap111.fill(Qt::transparent);
-       QPainter paint111(&pxmap111);
-      paint111.setPen( Qt::NoPen);
-       paint111.setBrush( QColor(255, 0, 0, 200) );
-       paint111.drawEllipse(0, 0, 12, 12);
-
-          pxmap111.save("abc.png", "PNG");
 
     QByteArray www;
     www.resize(20);
