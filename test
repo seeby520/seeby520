@@ -10,10 +10,7 @@
 #include <QtGui/QPixmap>
 #include <QtGui/QColor>
 
-auto func()
-{
-    return 5.0;
-}
+
 
 int main(int argc, char *argv[])
 {
