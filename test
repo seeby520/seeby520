@@ -1,0 +1,95 @@
+#include <QGuiApplication>
+#include <QtNetwork/QTcpSocket>
+#include <QtNetwork/QUdpSocket>
+#include <QThread>
+#include <QTimer>
+#include <QtNetwork/QNetworkDatagram>
+#include <QDateTime>
+#include <QByteArray>
+#include <QtGui/QPainter>
+#include <QtGui/QPixmap>
+#include <QtGui/QColor>
+
+auto func()
+{
+    return 5.0;
+}
+
+int main(int argc, char *argv[])
+{
+    QGuiApplication a(argc, argv);
+
+    //将16进制串转化成16进制数值组
+     //QStirng hex -> QByteArray hex
+     QString str1("02 FeBD D1 90");
+     QByteArray data1 = str1.toLocal8Bit();
+     QByteArray data2 = QByteArray::fromHex(data1);
+
+     //将10进制串转化成16进制数值组
+     //QStirng int -> QByteArray hex
+     bool ok;
+     QByteArray data3, data4;
+     QString str2 = "65534";
+     uint value = str2.toUInt(&ok, 10);
+     str2 = str2.setNum(value, 16);
+     data3 = str2.toLocal8Bit();
+     data4 = QByteArray::fromHex(data3);
+
+
+     //将十六进制数组转换成十六进制串（Hex）串
+     //QByteArray hex -> QStirng hex
+     QString str3;
+     str3 = data2.toHex(' ');
+
+     QByteArray text = QByteArray::fromHex("517420697320677265617421");
+   QString wwqq =    text.data();            // returns "Qt is great!"
+
+
+    QPixmap* pxmap = new QPixmap(12, 12);
+    pxmap->fill(Qt::transparent);
+    QPainter paint(pxmap);
+//    paint.setBrush( Qt::transparent );
+    //    paint.fillRect(0, 0, 12, 12, Qt::transparent);
+
+   paint.setPen( Qt::NoPen);
+
+    paint.setBrush( QColor(255, 0, 0, 200) );
+    paint.drawEllipse(0, 0, 12, 12);
+
+       pxmap->save("ab.png", "PNG");
+
+
+       QPixmap pxmap111(12, 12);
+       pxmap111.fill(Qt::transparent);
+       QPainter paint111(&pxmap111);
+      paint111.setPen( Qt::NoPen);
+       paint111.setBrush( QColor(255, 0, 0, 200) );
+       paint111.drawEllipse(0, 0, 12, 12);
+
+          pxmap111.save("abc.png", "PNG");
+
+    QByteArray www;
+    www.resize(20);
+    www.fill(0);
+    qDebug()<<www;
+
+    QString  ss =  "[sssss]";
+    ss.remove("[");
+    ss.remove("]");
+    bool sss = false;
+    int aa = sss;
+    QUdpSocket udp;
+  bool awwa =   udp.bind(QHostAddress("192.168.1.111"), 30333);
+
+    static    int _prs_number = 0;
+    const  int szBuf = 100;
+    QDateTime time = QDateTime::currentDateTime();
+    QString sendBuf = QString("%1;%2;Get_State;true").arg(QString::number(time.toTime_t())).arg(++_prs_number);   // "%d;1;Get_State;true"
+    char recvbuf[szBuf] = { 0 };
+    qint64 sz =  udp.writeDatagram(sendBuf.toLatin1(), QHostAddress("192.168.1.216"), 30333);
+    qDebug()<<sz;
+    qDebug()<< udp.error();
+    decltype (func()) ff  = 7.7;
+
+    return a.exec();
+}
